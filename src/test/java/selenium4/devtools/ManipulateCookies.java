@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * Network.setCookie : Sets a cookie with the given cookie data.
  * Network.setCookies : Sets given cookies.
  */
-public class ClearCookies {
+public class ManipulateCookies {
     public static void main(String[] args) throws Exception {
 
         //Setting up the driver

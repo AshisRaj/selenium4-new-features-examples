@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Adding extra header to the HTTP request is helpful when our application under test
+ * exposes filters requests or exposes specific features depending on the received headers.
+ */
 public class AddCustomHeaders {
 
     public static void main(String[] args) throws Exception {
@@ -33,6 +37,7 @@ public class AddCustomHeaders {
         Map<String, Object> extraHeaders = new HashMap()
          {{
             put("Authorization", basicAuth);
+            put("testing", "selenium");
          }};
         chromeDevTools.send(Network.setExtraHTTPHeaders(new Headers(extraHeaders)));
 

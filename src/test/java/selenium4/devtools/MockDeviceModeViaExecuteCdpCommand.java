@@ -15,7 +15,7 @@ import java.util.HashMap;
  * in various dimensions to trigger the responsiveness of the application.
  *
  */
-public class SimulateDeviceModeViaExecuteCdpCommand {
+public class MockDeviceModeViaExecuteCdpCommand {
 
     public static void main(String[] args) throws InterruptedException {
 

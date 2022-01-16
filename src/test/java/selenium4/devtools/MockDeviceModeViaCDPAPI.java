@@ -9,7 +9,7 @@ import org.openqa.selenium.devtools.v96.emulation.Emulation;
 import java.util.HashMap;
 import java.util.Optional;
 
-public class SimulateDeviceModeViaCDPAPI {
+public class MockDeviceModeViaCDPAPI {
 
     public static void main(String[] args) throws Exception {
 

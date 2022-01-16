@@ -18,7 +18,7 @@ import java.util.Optional;
  * The Selenium 4 with Chrome DevTools Protocol provides option
  * to control the network bandwidth it is called network emulation.
  */
-public class SimulateNetworkSpeed {
+public class MockNetworkSpeed {
 
     public static void main(String[] args) throws Exception {
 

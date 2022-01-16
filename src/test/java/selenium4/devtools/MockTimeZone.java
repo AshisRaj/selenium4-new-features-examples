@@ -9,7 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class ChangeTimeZone {
+/**
+ * In case your website changes depending on your end-user’s time zone,
+ * you can test that functionality by specifying a time zone you want to test in.
+ * You can configure your tests to run on a custom time zone.
+ */
+public class MockTimeZone {
     public static void main(String[] args) throws Exception {
 
         //Setting up the driver

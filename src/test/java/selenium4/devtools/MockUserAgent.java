@@ -7,7 +7,12 @@ import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
-public class UserAgent {
+/**
+ * Sometimes, we want to test mobile web apps
+ * and that’s where UserAgent comes into play.
+ * We can change our browser to a mobile browser by providing a mobile user agent.
+ */
+public class MockUserAgent {
     public static void main(String[] args) throws Exception {
 
         //Setting up the driver

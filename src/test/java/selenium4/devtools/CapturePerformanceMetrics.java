@@ -18,9 +18,6 @@ import java.util.stream.Collectors;
  * Poor performing websites and slower loading pages make unhappy customers.
  *
  * Can we validate these metrics along with our functional regression on every build? Yes, we can!
- *
- * The CDP command to capture performance metrics is Performance.enable.
- * Information for this command can be found in the documentation.
  */
 
 public class CapturePerformanceMetrics {
