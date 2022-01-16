@@ -45,10 +45,10 @@ public class BlockURLAndResources {
         //Hitting the URL you want to test
         driver.get("https://www.google.com");
 
-        chromeDevTools.send(Network.disable());
-        chromeDevTools.close();
-
         Thread.sleep(3000);
         driver.quit();
+
+        chromeDevTools.send(Network.disable());
+        chromeDevTools.close();
     }
 }

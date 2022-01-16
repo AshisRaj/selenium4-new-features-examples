@@ -31,6 +31,7 @@ public class SimulateNetworkSpeed {
         chromeDevTools.createSession();
 
         chromeDevTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
+        //simulate network and then launch
         chromeDevTools.send(Network.emulateNetworkConditions(
                 false,
                 20,
@@ -38,6 +39,7 @@ public class SimulateNetworkSpeed {
                 50,
                 Optional.of(ConnectionType.CELLULAR2G)
         ));
+
         driver.get("https://www.google.com");
 
         chromeDevTools.send(Security.disable());

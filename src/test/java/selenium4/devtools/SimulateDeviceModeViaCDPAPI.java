@@ -21,14 +21,7 @@ public class SimulateDeviceModeViaCDPAPI {
         DevTools chromeDevTools = driver.getDevTools();
         chromeDevTools.createSession();
 
-        HashMap deviceMetrics = new HashMap()
-        {{
-            put("width", 600);
-            put("height", 1000);
-            put("mobile", true);
-            put("deviceScaleFactor", 50);
-        }};
-
+        //set device first and then launch
         chromeDevTools.send(Emulation.setDeviceMetricsOverride(375,
                 812,
                 50,
@@ -43,10 +36,19 @@ public class SimulateDeviceModeViaCDPAPI {
                 Optional.empty(),
                 Optional.empty()));
 
-        // Alternatively
+        // Alternatively call like below
+        // HashMap deviceMetrics = new HashMap()
+        // {{
+        // put("width", 600);
+        // put("height", 1000);
+        // put("mobile", true);
+        //put("deviceScaleFactor", 50);
+        // }};
         //chromeDevTools.send(new Command<>("Emulation.setDeviceMetricsOverride", deviceMetrics));
 
         driver.get("https://www.zoomcar.com");
+
+        chromeDevTools.close();
 
         Thread.sleep(3000);
         driver.quit();

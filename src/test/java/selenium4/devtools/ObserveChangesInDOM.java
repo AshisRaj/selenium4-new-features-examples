@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.events.DomMutationEvent;
+import org.openqa.selenium.devtools.v96.network.Network;
 import org.openqa.selenium.logging.HasLogEvents;
 
 import java.util.concurrent.CountDownLatch;
@@ -61,5 +62,10 @@ public class ObserveChangesInDOM {
         assertThat(latch.await(10, SECONDS), is(true));
         assertThat(seen.get().getAttributeName(), is("cheese"));
         assertThat(seen.get().getCurrentValue(), is("gouda"));
+
+        chromeDevTools.close();
+
+        Thread.sleep(3000);
+        driver.quit();
    }
 }

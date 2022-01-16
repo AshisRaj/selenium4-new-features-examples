@@ -30,6 +30,7 @@ public class CaptureHTTPRequest {
         chromeDevTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
         chromeDevTools.addListener(Network.requestWillBeSent(),
             requestSent -> {
+                System.out.println("Request ID => " + requestSent.getRequestId());
                 System.out.println("Request URI => " + requestSent.getRequest().getUrl());
                 System.out.println("Request Method => " + requestSent.getRequest().getMethod());
                 System.out.println("Request Headers => " + requestSent.getRequest().getHeaders().toString());

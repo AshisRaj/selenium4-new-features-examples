@@ -27,6 +27,7 @@ public class SimulateDeviceModeViaExecuteCdpCommand {
         DevTools chromeDevTools = driver.getDevTools();
         chromeDevTools.createSession();
 
+        //set device first and then launch
         HashMap deviceMetrics = new HashMap()
         {{
             put("width", 600);
@@ -37,6 +38,8 @@ public class SimulateDeviceModeViaExecuteCdpCommand {
         driver.executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
 
         driver.get("https://www.zoomcar.com");
+
+        chromeDevTools.close();
 
         Thread.sleep(3000);
         driver.quit();
