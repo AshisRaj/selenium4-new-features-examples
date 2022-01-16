@@ -12,6 +12,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * We can clear browser cookies, delete all cookies, get and set cookie or cookies.
+ * Network.deleteCookies : Deletes browser cookies with matching name and URL or domain/path pair.
+ * Network.getCookies : Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the cookies field.
+ * Network.setCookie : Sets a cookie with the given cookie data.
+ * Network.setCookies : Sets given cookies.
+ */
 public class ClearCookies {
     public static void main(String[] args) throws Exception {
 
