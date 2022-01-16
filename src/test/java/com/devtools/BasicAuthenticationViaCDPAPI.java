@@ -24,7 +24,7 @@ public class BasicAuthenticationViaCDPAPI {
     private static final String USERNAME = "guest";
     private static final String PASSWORD = "guest";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -57,6 +57,10 @@ public class BasicAuthenticationViaCDPAPI {
             System.out.println("Login failed");
         }
 
-//        driver.quit();
+        chromeDevTools.send(Network.disable());
+        chromeDevTools.close();
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

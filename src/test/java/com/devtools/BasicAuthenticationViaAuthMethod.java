@@ -17,7 +17,7 @@ public class BasicAuthenticationViaAuthMethod {
     private static final String USERNAME = "guest";
     private static final String PASSWORD = "guest";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Set up the driver
         WebDriverManager.chromedriver().setup();
@@ -41,6 +41,7 @@ public class BasicAuthenticationViaAuthMethod {
             System.out.println("Login failed");
         }
 
+        Thread.sleep(3000);
         driver.quit();
     }
 }

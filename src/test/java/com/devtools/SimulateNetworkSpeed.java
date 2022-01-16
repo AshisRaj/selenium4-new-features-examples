@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.network.Network;
 import org.openqa.selenium.devtools.v96.network.model.ConnectionType;
+import org.openqa.selenium.devtools.v96.security.Security;
 
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ import java.util.Optional;
  */
 public class SimulateNetworkSpeed {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -39,9 +40,10 @@ public class SimulateNetworkSpeed {
         ));
         driver.get("https://www.google.com");
 
-        chromeDevTools.send(Network.disable());
+        chromeDevTools.send(Security.disable());
+        chromeDevTools.close();
 
-        // To close the browser window
+        Thread.sleep(3000);
         driver.quit();
     }
 }

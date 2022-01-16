@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v96.network.Network;
 import org.openqa.selenium.devtools.v96.security.Security;
 
 /**
@@ -15,7 +16,7 @@ import org.openqa.selenium.devtools.v96.security.Security;
  */
 public class LoadInsecureWebPages {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -30,6 +31,10 @@ public class LoadInsecureWebPages {
 
         driver.get("https://expired.badssl.com/");
 
+        chromeDevTools.send(Security.disable());
+        chromeDevTools.close();
+
+        Thread.sleep(3000);
         driver.quit();
     }
 }

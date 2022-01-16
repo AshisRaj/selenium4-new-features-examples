@@ -37,6 +37,7 @@ public class SimulateDeviceModeViaExecuteCdpCommand {
         driver.executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
 
         driver.get("https://www.zoomcar.com");
+
         Thread.sleep(3000);
         driver.quit();
     }

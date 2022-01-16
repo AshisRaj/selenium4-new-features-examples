@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class CaptureHTTPResponse {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -37,8 +37,9 @@ public class CaptureHTTPResponse {
         driver.get("https://www.booking.com");
 
         chromeDevTools.send(Network.disable());
+        chromeDevTools.close();
 
-        // To close window that has the focus
-        driver.close();
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 public class CaptureHTTPRequest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -45,8 +45,9 @@ public class CaptureHTTPRequest {
         driver.get("https://www.booking.com");
 
         chromeDevTools.send(Network.disable());
+        chromeDevTools.close();
 
-        // Close window
-        driver.close();
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

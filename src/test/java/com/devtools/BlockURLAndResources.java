@@ -24,7 +24,7 @@ import java.util.Optional;
  */
 public class BlockURLAndResources {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -46,8 +46,9 @@ public class BlockURLAndResources {
         driver.get("https://www.google.com");
 
         chromeDevTools.send(Network.disable());
+        chromeDevTools.close();
 
-        // To close the browser window
-        //driver.quit();
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

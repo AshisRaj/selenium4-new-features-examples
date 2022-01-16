@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 public class CapturePerformanceMetrics {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -34,6 +34,7 @@ public class CapturePerformanceMetrics {
         ChromeDriver driver = new ChromeDriver();
         DevTools chromeDevTools = driver.getDevTools();
         chromeDevTools.createSession();
+
         chromeDevTools.send(Performance.enable(Optional.of(Performance.EnableTimeDomain.TIMETICKS)));
 
         driver.get("https://www.google.org");
@@ -53,6 +54,10 @@ public class CapturePerformanceMetrics {
         metricsToCheck.forEach( metric -> System.out.println(metric +
                 " is : " + metrics.get(metricNames.indexOf(metric)).getValue()));
 
+        chromeDevTools.send(Performance.disable());
+        chromeDevTools.close();
+
+        Thread.sleep(3000);
         driver.quit();
     }
 }

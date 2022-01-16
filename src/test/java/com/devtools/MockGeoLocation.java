@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.emulation.Emulation;
-import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
@@ -18,7 +17,7 @@ import java.util.Optional;
  */
 public class MockGeoLocation {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -35,7 +34,9 @@ public class MockGeoLocation {
 
         driver.get("https://mycurrentlocation.net/");
 
-        // To close window that has the focus
-        driver.close();
+        chromeDevTools.close();
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
