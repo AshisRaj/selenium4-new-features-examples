@@ -1,4 +1,4 @@
-package com.actions;
+package selenium4.actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -12,7 +12,7 @@ import java.io.File;
 
 import static java.lang.System.getProperty;
 
-public class DrapAndHold {
+public class DragAndDrop {
     final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) throws Exception {
@@ -22,21 +22,20 @@ public class DrapAndHold {
 
         //Initialize the driver
         ChromeDriver driver = new ChromeDriver();
-        driver.get("https://jqueryui.com/draggable/");
-        WebElement dragFrame = driver.findElement(By.xpath("//*[@id=\"content\"]/iframe"));
+        driver.get("https://jqueryui.com/droppable/");
 
         driver.switchTo().frame(0);
-        WebElement dragBox = driver.findElement(By.id("draggable"));
+
+        WebElement source = driver.findElement(By.id("draggable"));
+        WebElement destination = driver.findElement(By.id("droppable"));
 
         Actions action = new Actions(driver);
-        action.clickAndHold(dragBox).moveByOffset(40, 30).build().perform();
-        Thread.sleep(2000);
+        //Alternate way: action.clickAndHold(source).moveToElement(destination).release().build().perform();
+        action.clickAndHold(source).release(destination).build().perform();
 
-        driver.switchTo().parentFrame();
-        File source = dragFrame.getScreenshotAs(OutputType.FILE);
-        File dest = new File(PROJECT_PATH + "/Screenshots/drag_and_hold.png");
-
-        FileHandler.copy(source, dest);
+        File src = destination.getScreenshotAs(OutputType.FILE);
+        File dest = new File(PROJECT_PATH + "/Screenshots/drag_and_release.png");
+        FileHandler.copy(src, dest);
 
         Thread.sleep(3000);
         driver.quit();

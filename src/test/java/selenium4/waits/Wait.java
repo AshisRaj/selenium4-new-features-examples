@@ -1,4 +1,4 @@
-package com.waits;
+package selenium4.waits;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,10 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.IOException;
 import java.time.Duration;
 
-import static java.lang.System.getProperty;
-
 public class Wait {
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) throws IOException {
 

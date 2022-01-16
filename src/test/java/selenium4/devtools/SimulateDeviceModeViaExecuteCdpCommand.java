@@ -1,15 +1,22 @@
-package com.devtools;
+package selenium4.devtools;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.Command;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v96.emulation.Emulation;
-
 import java.util.HashMap;
-import java.util.Optional;
 
-public class SimulateDeviceModeViaCDPAPI {
+/**
+ * Most of the applications we build today are responsive
+ * to cater to the needs of the end users
+ * coming from a variety of platforms,
+ * devices like phones, tablets, wearable devices, desktops  and orientations.
+ *
+ * As testers, we might want to place our application
+ * in various dimensions to trigger the responsiveness of the application.
+ *
+ */
+public class SimulateDeviceModeViaExecuteCdpCommand {
+
     public static void main(String[] args) throws InterruptedException {
 
         //Setting up the driver
@@ -27,23 +34,7 @@ public class SimulateDeviceModeViaCDPAPI {
             put("mobile", true);
             put("deviceScaleFactor", 50);
         }};
-
-        chromeDevTools.send(Emulation.setDeviceMetricsOverride(375,
-                812,
-                50,
-                true,
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty(),
-                Optional.empty()));
-
-        // Alternatively
-        //chromeDevTools.send(new Command<>("Emulation.setDeviceMetricsOverride", deviceMetrics));
+        driver.executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetrics);
 
         driver.get("https://www.zoomcar.com");
 

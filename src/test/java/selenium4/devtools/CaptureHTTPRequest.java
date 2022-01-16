@@ -1,4 +1,4 @@
-package com.devtools;
+package selenium4.devtools;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

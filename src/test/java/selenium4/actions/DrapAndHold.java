@@ -1,4 +1,4 @@
-package com.actions;
+package selenium4.actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -9,12 +9,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 import static java.lang.System.getProperty;
 
-public class RightClick {
+public class DrapAndHold {
     final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) throws Exception {
@@ -24,22 +22,21 @@ public class RightClick {
 
         //Initialize the driver
         ChromeDriver driver = new ChromeDriver();
-        driver.get("https://swisnl.github.io/jQuery-contextMenu/demo.html");
-        WebElement rightBtn = driver.findElement(By.className("btn"));
+        driver.get("https://jqueryui.com/draggable/");
+        WebElement dragFrame = driver.findElement(By.xpath("//*[@id=\"content\"]/iframe"));
+
+        driver.switchTo().frame(0);
+        WebElement dragBox = driver.findElement(By.id("draggable"));
 
         Actions action = new Actions(driver);
-        action.contextClick(rightBtn).perform();
+        action.clickAndHold(dragBox).moveByOffset(40, 30).build().perform();
+        Thread.sleep(2000);
 
-        File source = rightBtn.getScreenshotAs(OutputType.FILE);
-        File dest = new File(PROJECT_PATH + "/Screenshots/right_click.png");
+        driver.switchTo().parentFrame();
+        File source = dragFrame.getScreenshotAs(OutputType.FILE);
+        File dest = new File(PROJECT_PATH + "/Screenshots/drag_and_hold.png");
 
         FileHandler.copy(source, dest);
-
-        List<WebElement> elements = driver.findElements(By.cssSelector("li span"));
-        System.out.println("WebElements After Right Click:");
-        for (WebElement element : elements) {
-            System.out.println("\t" + element.getText());
-        }
 
         Thread.sleep(3000);
         driver.quit();

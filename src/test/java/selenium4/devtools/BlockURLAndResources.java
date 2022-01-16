@@ -1,4 +1,4 @@
-package com.devtools;
+package selenium4.devtools;
 
 import com.google.common.collect.ImmutableList;
 import io.github.bonigarcia.wdm.WebDriverManager;
