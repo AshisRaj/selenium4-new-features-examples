@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
-import java.io.IOException;
 
 import static java.lang.System.getProperty;
 
@@ -38,5 +37,8 @@ public class DrapAndHold {
         File dest = new File(PROJECT_PATH + "/Screenshots/drag_and_hold.png");
 
         FileHandler.copy(source, dest);
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

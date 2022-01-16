@@ -1,5 +1,14 @@
 package com.devtools;
 
+import com.google.common.collect.ImmutableList;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v96.network.Network;
+
+import java.util.Optional;
+
 /**
  * Page loading strategy: Defines the current session’s page loading strategy.
  * By default, when Selenium WebDriver loads a page, it follows the normal pageLoadStrategy.
@@ -13,20 +22,7 @@ package com.devtools;
  *
  * These scenarios can be tested using Chrome DevToos Protocol(CDP) in selenium 4.
  */
-import com.google.common.collect.ImmutableList;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import static java.lang.System.getProperty;
-
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v96.network.Network;
-
-import java.util.Optional;
-
 public class BlockURLAndResources {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 

@@ -9,34 +9,22 @@ import org.openqa.selenium.devtools.v96.fetch.Fetch;
 
 import java.util.Optional;
 
-import static java.lang.System.getProperty;
-
 /**
+ *  Consider the example, we have a website which internally calls some API,
+ *  now what happens if we change the API parameters, what happens if we change the request information.
+ *  Mocking can be done in selenium using CDP commands
  *
- Consider the example, we have a website which internally calls some API,
- now what happens if we change the API parameters, what happens if we change the request information.
-
- Mocking can be done in selenium using CDP commands
-
- Let’s consider the example,
-
- Navigate to https://rahulshettyacademy.com/angularAppdemo/
-
- Click on Virtual Library
-
- It loads the table with book details.
-
- If you open the Chrome Network Tab, internally it is making call to /GetBook.php?AuthorName=Shetty
-
- Now, let’s change the network URL parameters programmatically,
-
- We have /GetBook.php?AuthorName=Shetty API call
-
- for that lets replace Shetty with Unkown and lets see what happens
+ *  Let’s consider the example,
+ *  Navigate to https://rahulshettyacademy.com/angularAppdemo/
+ *  Click on Virtual Library
+ *  It loads the table with book details.
+ *  If you open the Chrome Network Tab,
+ *  internally it is making call to /GetBook.php?AuthorName=Shetty
+ *  Now, let’s change the network URL parameters programmatically,
+ *  We have /GetBook.php?AuthorName=Shetty API call
+ *  for that lets replace Shetty with Unkown and lets see what happens
  */
-
 public class MockAPI {
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -64,5 +52,7 @@ public class MockAPI {
 
         driver.get("https://www.rahulshettyacademy.com/angularAppdemo/");
         driver.findElement(By.xpath("//button[contains(text(),'Virtual Library')] ")).click();
+
+        driver.quit();
     }
 }

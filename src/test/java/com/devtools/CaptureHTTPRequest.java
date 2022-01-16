@@ -6,16 +6,16 @@ import com.google.gson.JsonParser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.System.getProperty;
-
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
+/**
+ * We can capture the HTTP requests the application is invoking
+ * and access the method, data, headers and lot more.
+ */
 public class CaptureHTTPRequest {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -33,7 +33,7 @@ public class CaptureHTTPRequest {
                 System.out.println("Request URI => " + requestSent.getRequest().getUrl());
                 System.out.println("Request Method => " + requestSent.getRequest().getMethod());
                 System.out.println("Request Headers => " + requestSent.getRequest().getHeaders().toString());
-                //requestSent.getRequest().getHeaders().toJson().forEach((k, v) -> System.out.println((k + ":" + v)));
+                // requestSent.getRequest().getHeaders().toJson().forEach((k, v) -> System.out.println((k + ":" + v)));
                 System.out.println("------------------------------------------------------");
 
                 Optional<String> postData = requestSent.getRequest().getPostData();
@@ -46,7 +46,7 @@ public class CaptureHTTPRequest {
 
         chromeDevTools.send(Network.disable());
 
-        // To close window that has the focus
+        // Close window
         driver.close();
     }
 }

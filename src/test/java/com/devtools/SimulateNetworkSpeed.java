@@ -2,14 +2,12 @@ package com.devtools;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.network.Network;
-
 import org.openqa.selenium.devtools.v96.network.model.ConnectionType;
 
 import java.util.Optional;
-
-import static java.lang.System.getProperty;
 
 /**
  * Consider we have a scenario, we need to test our website how
@@ -20,8 +18,6 @@ import static java.lang.System.getProperty;
  * to control the network bandwidth it is called network emulation.
  */
 public class SimulateNetworkSpeed {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -46,6 +42,6 @@ public class SimulateNetworkSpeed {
         chromeDevTools.send(Network.disable());
 
         // To close the browser window
-        // driver.quit();
+        driver.quit();
     }
 }

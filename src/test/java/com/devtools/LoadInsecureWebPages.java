@@ -3,8 +3,6 @@ package com.devtools;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.System.getProperty;
-
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.security.Security;
 
@@ -16,8 +14,6 @@ import org.openqa.selenium.devtools.v96.security.Security;
  and we can load that website on the browser and test it.
  */
 public class LoadInsecureWebPages {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -33,5 +29,7 @@ public class LoadInsecureWebPages {
         chromeDevTools.send(Security.setIgnoreCertificateErrors(true));
 
         driver.get("https://expired.badssl.com/");
+
+        driver.quit();
     }
 }

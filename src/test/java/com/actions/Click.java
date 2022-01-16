@@ -11,14 +11,13 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
 
 import java.io.File;
-import java.io.IOException;
 
 import static java.lang.System.getProperty;
 
 public class Click {
     final static String PROJECT_PATH = getProperty("user.dir");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -39,5 +38,8 @@ public class Click {
         dest = new File(PROJECT_PATH + "/Screenshots/after_click.png");
         FileHandler.copy(src, dest);
         Assert.assertEquals(driver.getTitle(), "Sign-on: Mercury Tours");
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

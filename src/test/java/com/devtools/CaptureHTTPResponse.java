@@ -3,16 +3,12 @@ package com.devtools;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.System.getProperty;
-
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
 public class CaptureHTTPResponse {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 

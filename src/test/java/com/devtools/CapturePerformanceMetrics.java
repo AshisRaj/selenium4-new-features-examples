@@ -3,8 +3,6 @@ package com.devtools;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.System.getProperty;
-
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.performance.Performance;
 import org.openqa.selenium.devtools.v96.performance.model.Metric;
@@ -26,7 +24,6 @@ import java.util.stream.Collectors;
  */
 
 public class CapturePerformanceMetrics {
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -55,5 +52,7 @@ public class CapturePerformanceMetrics {
 
         metricsToCheck.forEach( metric -> System.out.println(metric +
                 " is : " + metrics.get(metricNames.indexOf(metric)).getValue()));
+
+        driver.quit();
     }
 }

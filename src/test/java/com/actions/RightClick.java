@@ -17,7 +17,7 @@ import static java.lang.System.getProperty;
 public class RightClick {
     final static String PROJECT_PATH = getProperty("user.dir");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -40,5 +40,8 @@ public class RightClick {
         for (WebElement element : elements) {
             System.out.println("\t" + element.getText());
         }
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }

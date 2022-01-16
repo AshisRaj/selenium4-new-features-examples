@@ -8,21 +8,15 @@ import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
-import static java.lang.System.getProperty;
-
 /**
  * Testing the location-based functionality of applications
  * such as different offers, currencies, taxation rules,
  * freight charges and date/time format for various geolocations
  * is difficult because setting up the infrastructure
  * for all of these physical geolocations is not a feasible solution.
- *
  * With mocking the geolocation, we could cover all the aforementioned scenarios and more.
  */
-
 public class MockGeoLocation {
-
-    final static String PROJECT_PATH = getProperty("user.dir");
 
     public static void main(String[] args) {
 
@@ -42,6 +36,6 @@ public class MockGeoLocation {
         driver.get("https://mycurrentlocation.net/");
 
         // To close window that has the focus
-        // driver.close();
+        driver.close();
     }
 }

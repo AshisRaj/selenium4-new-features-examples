@@ -8,8 +8,6 @@ import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.log.Log;
 import org.openqa.selenium.interactions.Actions;
 
-import static java.lang.System.getProperty;
-
 /**
  * We all rely on logs for debugging and analysing the failures.
  * While testing and working on an application with specific data or specific conditions,
@@ -21,8 +19,6 @@ import static java.lang.System.getProperty;
  */
 public class AccessConsoleLogs {
 
-    final static String PROJECT_PATH = getProperty("user.dir");
-
     public static void main(String[] args) {
 
         //Setting up the driver
@@ -30,34 +26,6 @@ public class AccessConsoleLogs {
 
         //Initialize the driver
         ChromeDriver driver = new ChromeDriver();
-
-        Actions act = new Actions(driver);
-        WebElement toDoList= driver.findElement(By.id("toDoListBtn"));
-
-        // click method - to click on a webElement
-        act.moveToElement(toDoList).click();
-
-        // double click - double click on a webElement
-        act.moveToElement(toDoList).doubleClick();
-
-        // Context click - Right click on a webElement
-        act.moveToElement(toDoList).contextClick();
-
-        //clickAndHold method - click and hold on a webElement without releasing
-        act.moveToElement(toDoList).clickAndHold();
-
-        // release -release the hold on a webElement
-        act.moveToElement(toDoList).release();
-
-        Actions act1 = new Actions(driver);
-        WebElement toDoList1= driver.findElement(By.id("toDoListBtn"));
-
-        // click method - to click on a webElement
-        act1.click(toDoList);
-
-        //clickAndHold method - click and hold on a webElement without releasing
-        act1.clickAndHold(toDoList);
-
         DevTools chromeDevTools = driver.getDevTools();
         chromeDevTools.createSession();
 

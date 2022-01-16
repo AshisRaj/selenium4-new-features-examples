@@ -9,14 +9,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
-import java.io.IOException;
 
 import static java.lang.System.getProperty;
 
 public class DragAndDrop {
     final static String PROJECT_PATH = getProperty("user.dir");
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         //Setting up the driver
         WebDriverManager.chromedriver().setup();
@@ -37,5 +36,8 @@ public class DragAndDrop {
         File src = destination.getScreenshotAs(OutputType.FILE);
         File dest = new File(PROJECT_PATH + "/Screenshots/drag_and_release.png");
         FileHandler.copy(src, dest);
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
