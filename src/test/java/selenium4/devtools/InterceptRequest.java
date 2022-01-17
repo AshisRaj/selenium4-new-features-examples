@@ -23,9 +23,9 @@ public class InterceptRequest {
         chromeDevTools.send(Fetch.enable(Optional.empty(), Optional.empty()));
         chromeDevTools.addListener(Fetch.requestPaused(),
                 request -> {
-                    String url = request.getRequest().getUrl().contains("/v1/users")
-                            ? request.getRequest().getUrl().replace("/v1/users", "/v2/users")
-                            : request.getRequest().getUrl();
+                    String url = request.getRequest().getUrl();
+                    if(url.contains("/v1/users"))
+                        url.replace("/v1/users", "/v2/users");
                     chromeDevTools.send(Fetch.continueRequest(request.getRequestId(),
                             Optional.empty(),
                             Optional.empty(),
@@ -33,5 +33,7 @@ public class InterceptRequest {
                             Optional.empty(),
                             Optional.empty()));
                 });
+
+        driver.get("https://gorest.co.in/public/v1/users");
     }
 }
