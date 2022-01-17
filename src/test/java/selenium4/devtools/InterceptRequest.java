@@ -25,9 +25,9 @@ public class InterceptRequest {
                 request -> {
                     String url = request.getRequest().getUrl();
                     if(url.contains("/v1/users"))
-                        url.replace("/v1/users", "/v2/users");
+                        url = url.replace("/v1/users", "/v2/users");
                     chromeDevTools.send(Fetch.continueRequest(request.getRequestId(),
-                            Optional.empty(),
+                            Optional.of(url),
                             Optional.empty(),
                             Optional.empty(),
                             Optional.empty(),
