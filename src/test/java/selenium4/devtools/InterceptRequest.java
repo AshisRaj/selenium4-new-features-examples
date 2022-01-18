@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v96.fetch.Fetch;
-import org.openqa.selenium.devtools.v96.network.Network;
 
 import java.util.Optional;
 
@@ -21,11 +20,13 @@ public class InterceptRequest {
         chromeDevTools.createSession();
 
         chromeDevTools.send(Fetch.enable(Optional.empty(), Optional.empty()));
+        // This URI v2/users does not locate to any resource, hence will give 404 error
+        // Hence, intercept the request and replace the URI with /v1/users
         chromeDevTools.addListener(Fetch.requestPaused(),
                 request -> {
                     String url = request.getRequest().getUrl();
-                    if(url.contains("/v1/users"))
-                        url = url.replace("/v1/users", "/v2/users");
+                    if(url.contains("/v2/users"))
+                        url = url.replace("/v2/users", "/v1/users");
                     chromeDevTools.send(Fetch.continueRequest(request.getRequestId(),
                             Optional.of(url),
                             Optional.empty(),
@@ -34,6 +35,6 @@ public class InterceptRequest {
                             Optional.empty()));
                 });
 
-        driver.get("https://gorest.co.in/public/v1/users");
+        driver.get("https://gorest.co.in/public/v2/users");
     }
 }
