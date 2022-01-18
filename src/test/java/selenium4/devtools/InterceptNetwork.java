@@ -34,6 +34,7 @@ public class InterceptNetwork {
         Supplier<InputStream> message = () ->
             new ByteArrayInputStream("Creamy, delicious cheese!".getBytes(StandardCharsets.UTF_8));
 
+        // Intercept the network and stub out the tailor made response
         NetworkInterceptor interceptor = new NetworkInterceptor(driver,
              Route.matching(req -> true)
                 .to(() -> req -> new HttpResponse()
@@ -52,5 +53,7 @@ public class InterceptNetwork {
             System.out.println("Failed: Content was not found in the source");
         }
         interceptor.close();
+        Thread.sleep(3000);
+        driver.quit();
     }
 }
